@@ -3,7 +3,7 @@ import axios from "axios"
 import { useFormik } from "formik"
  import * as Yup from 'yup';
 
-export default function Form() {
+export default function Form(props) {
 
     const formik = useFormik({
         initialValues:{
@@ -27,6 +27,7 @@ export default function Form() {
             .then(res => {
                 alert(JSON.stringify(values, null, 2))
                 console.log(res)
+                props.getSuperheroes()
             })
             .catch((err) => {
                 alert(err.message)

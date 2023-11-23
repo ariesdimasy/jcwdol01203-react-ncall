@@ -20,7 +20,14 @@ function App() {
     //   console.log("err => ", err )
     // })
 
-    axios.get("http://localhost:3000/superheroes")
+    getSuperheroes()
+
+    // console.log("useEffect")
+
+  },[])
+
+  const getSuperheroes = () => {
+     axios.get("http://localhost:3000/superheroes")
     .then((res) => {
       console.log(res.data)
       setSuperheroes(res.data)
@@ -28,11 +35,7 @@ function App() {
     .catch((err) => {
       console.log(err)
     })
-
-    // console.log("useEffect")
-
-  },[])
-
+  }
 
   return (
     <>
@@ -46,7 +49,7 @@ function App() {
       })}
       </div>
 
-      <Form />
+      <Form getSuperheroes={getSuperheroes} />
     </>
   )
 }
